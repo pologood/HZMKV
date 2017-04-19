@@ -7,12 +7,14 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Client" />
+        <module name="Common" />
         <module name="Guardian" />
         <module name="Storage" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Client" target="1.8" />
+      <module name="Common" target="1.8" />
       <module name="Guardian" target="1.8" />
       <module name="HZMarketView" target="1.8" />
       <module name="Storage" target="1.8" />

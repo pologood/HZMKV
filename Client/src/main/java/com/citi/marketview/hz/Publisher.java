@@ -11,7 +11,7 @@ import java.util.Map;
 public class Publisher {
     private Map.Entry<String, Integer> guardian;
 
-    public Publisher(String entity){
+    public Publisher(){
         HazelcastInstance instance = Client.getInstance();
         GuardianMapping g = new GuardianMapping();
         try {
@@ -19,6 +19,9 @@ public class Publisher {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
+    }
+
+    private void publish(String entity, Map<String,String> content){
 
     }
 

@@ -5,13 +5,11 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
 import java.net.MalformedURLException;
-import java.util.Map;
 
 /**
  * Created by zs16243 on 18/04/2017.
  */
 public class Subscriber {
-    private Map.Entry<String, Integer> guardian;
     public Subscriber(String entity, IMapEntryProcessor handler){
         HazelcastInstance instance = Client.getInstance();
         GuardianMapping g = new GuardianMapping();

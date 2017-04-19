@@ -9,21 +9,15 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.citi.marketview.replacement</groupId>
-    <artifactId>Client</artifactId>
+    <artifactId>Common</artifactId>
     <version>1.0</version>
-
     <dependencies>
         <dependency>
-            <groupId>com.mashape.unirest</groupId>
-            <artifactId>unirest-java</artifactId>
-            <version>1.4.7</version>
-        </dependency>
-        <dependency>
-            <groupId>com.citi.marketview.replacement</groupId>
-            <artifactId>Common</artifactId>
-            <version>1.0</version>
+            <groupId>com.hazelcast</groupId>
+            <artifactId>hazelcast</artifactId>
+            <version>3.6-EA3</version>
         </dependency>
     </dependencies>
+
 
 </project>

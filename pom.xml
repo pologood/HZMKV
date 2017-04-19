@@ -12,6 +12,7 @@
         <module>Storage</module>
         <module>Guardian</module>
         <module>Client</module>
+        <module>Common</module>
     </modules>
 
     <repositories>

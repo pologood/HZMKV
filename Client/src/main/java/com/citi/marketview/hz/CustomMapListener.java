@@ -40,7 +40,7 @@ public class CustomMapListener implements EntryAddedListener<String, String>,
         process(entryEvent);
     }
 
-    public void process(EntryEvent<String, String> entryEvent){
+    private void process(EntryEvent<String, String> entryEvent){
         imp.process(entryEvent);
     }
 

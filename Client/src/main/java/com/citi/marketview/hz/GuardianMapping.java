@@ -49,8 +49,4 @@ public class GuardianMapping {
         }
         return null;
     }
-
-    public URL setupPublish(String entity){
-
-    }
 }
