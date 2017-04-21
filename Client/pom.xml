@@ -24,6 +24,11 @@
             <artifactId>Common</artifactId>
             <version>1.0</version>
         </dependency>
+        <dependency>
+            <groupId>info.jerrinot</groupId>
+            <artifactId>subzero-all</artifactId>
+            <version>RELEASE</version>
+        </dependency>
     </dependencies>
 
 </project>

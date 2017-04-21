@@ -7,38 +7,28 @@ import com.hazelcast.spi.PartitionAwareOperation;
 
 import java.io.IOException;
 
-class IncOperation extends Operation implements PartitionAwareOperation {
+@SuppressWarnings("unused")
+class SubscribeOperation extends Operation implements PartitionAwareOperation {
+
     private String objectId;
-    private int amount, returnValue;
+    private String entity;
+    private String returnValue;
 
-    // Important to have a no-arg constructor for deserialization
-    public IncOperation() {
+    // it is important to have a no-arg constructor for deserialization
+    public SubscribeOperation() {
     }
 
-    @Override
-    public void beforeRun() throws Exception {
-
-    }
-
-    public IncOperation(String objectId, int amount) {
-        this.amount = amount;
+    SubscribeOperation(String objectId, String entity) {
+        this.entity = entity;
         this.objectId = objectId;
     }
 
     @Override
     public void run() throws Exception {
         System.out.println("Executing " + objectId + ".inc() on: " + getNodeEngine().getThisAddress());
-        returnValue = 0;
-    }
-
-    @Override
-    public void afterRun() throws Exception {
-
-    }
-
-    @Override
-    public boolean returnsResponse() {
-        return false;
+        String uuid = this.getCallerUuid();
+        this.getNodeEngine().getHazelcastInstance().getMap("");
+        returnValue = "";
     }
 
     @Override
@@ -48,15 +38,15 @@ class IncOperation extends Operation implements PartitionAwareOperation {
 
     @Override
     protected void writeInternal(ObjectDataOutput out) throws IOException {
-        super.writeData(out);
+        super.writeInternal(out);
         out.writeUTF(objectId);
-        out.writeInt(amount);
+        out.writeUTF(entity);
     }
 
     @Override
     protected void readInternal(ObjectDataInput in) throws IOException {
-        super.readData(in);
+        super.readInternal(in);
         objectId = in.readUTF();
-        amount = in.readInt();
+        entity = in.readUTF();
     }
 }

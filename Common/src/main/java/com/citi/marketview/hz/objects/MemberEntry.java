@@ -20,4 +20,5 @@ public class MemberEntry {
         uuid = member.getUuid();
         member.getAttributes().entrySet().stream().forEach(en -> attributes.put(en.getKey(), en.getValue().toString()));
     }
+
 }

@@ -1,4 +1,5 @@
 package com.citi.marketview.hz.services;
+
 import com.hazelcast.spi.AbstractDistributedObject;
 import com.hazelcast.spi.InvocationBuilder;
 import com.hazelcast.spi.NodeEngine;
@@ -6,17 +7,18 @@ import com.hazelcast.util.ExceptionUtil;
 
 import java.util.concurrent.Future;
 
-public class CounterProxy extends AbstractDistributedObject<CounterService> implements Counter {
+public class SubscribeProxy extends AbstractDistributedObject<SubscribeService> implements Subscribe {
+
     private final String name;
 
-    public CounterProxy(String name, NodeEngine nodeEngine, CounterService counterService) {
-        super(nodeEngine, counterService);
+    SubscribeProxy(String name, NodeEngine nodeEngine, SubscribeService subscribeServiceService) {
+        super(nodeEngine, subscribeServiceService);
         this.name = name;
     }
 
     @Override
     public String getServiceName() {
-        return CounterService.NAME;
+        return SubscribeService.NAME;
     }
 
     @Override
@@ -25,14 +27,13 @@ public class CounterProxy extends AbstractDistributedObject<CounterService> impl
     }
 
     @Override
-    public int inc(int amount) {
+    public String subscribe(String entity) {
         NodeEngine nodeEngine = getNodeEngine();
-        IncOperation operation = new IncOperation(name, amount);
+        SubscribeOperation operation = new SubscribeOperation(name, entity);
         int partitionId = nodeEngine.getPartitionService().getPartitionId(name);
-        InvocationBuilder builder = nodeEngine.getOperationService()
-                .createInvocationBuilder(CounterService.NAME, operation, partitionId);
+        InvocationBuilder builder = nodeEngine.getOperationService().createInvocationBuilder(SubscribeService.NAME, operation, partitionId);
         try {
-            final Future<Integer> future = builder.invoke();
+            Future<String> future = builder.invoke();
             return future.get();
         } catch (Exception e) {
             throw ExceptionUtil.rethrow(e);

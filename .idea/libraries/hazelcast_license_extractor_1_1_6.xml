@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="hazelcast-license-extractor-1.1.6">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../mancenter/mancenter-3.8.1/hazelcast-license-extractor-1.1.6.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

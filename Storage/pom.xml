@@ -13,5 +13,12 @@
     <artifactId>Storage</artifactId>
     <version>1.0</version>
 
+    <dependencies>
+        <dependency>
+            <groupId>info.jerrinot</groupId>
+            <artifactId>subzero-all</artifactId>
+            <version>0.7</version>
+        </dependency>
+    </dependencies>
 
 </project>

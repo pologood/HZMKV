@@ -7,14 +7,15 @@ import com.hazelcast.spi.RemoteService;
 
 import java.util.Properties;
 
-public class CounterService implements ManagedService, RemoteService {
-    public static final String NAME = "CounterService";
+public class SubscribeService implements ManagedService, RemoteService {
+
+    static final String NAME = "SubscribeService";
 
     private NodeEngine nodeEngine;
 
     @Override
     public DistributedObject createDistributedObject(String objectName) {
-        return new CounterProxy(objectName, nodeEngine, this);
+        return new SubscribeProxy(objectName, nodeEngine, this);
     }
 
     @Override

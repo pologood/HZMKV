@@ -15,16 +15,18 @@ public class ClientMain {
     public static void main(String[] args) {
         HazelcastInstance hi = Client.getInstance("CLIENT_NAME");
         startHB(hi);
-        Subscriber s = new Subscriber("dupa", new Processor());
+        //Subscriber s = new Subscriber("dupa", new Processor());
     }
 
     public static void startHB(HazelcastInstance hi){
         Executors.newSingleThreadExecutor().execute(() -> {
-            IMap<HeartBeat, Long> hbs = hi.getMap("HEARTBEATS");
+            IMap<Long,HeartBeat> hbs = hi.getMap("HEARTBEATS");
             while (true){
-                hbs.put(new HeartBeat(hi), new Date().getTime(),10, TimeUnit.SECONDS);
+                long timestamp = new Date().getTime();
+                hbs.put(timestamp ,new HeartBeat(hi),30, TimeUnit.SECONDS);
+                System.out.println(timestamp);
                 try {
-                    TimeUnit.SECONDS.sleep(5);
+                    TimeUnit.SECONDS.sleep(20);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="mancenter-3.8.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../mancenter/mancenter-3.8.1.war!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

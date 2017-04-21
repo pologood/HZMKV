@@ -4,6 +4,7 @@ import com.hazelcast.config.*;
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastException;
 import com.hazelcast.core.HazelcastInstance;
+import info.jerrinot.subzero.SubZero;
 
 import java.util.Arrays;
 
@@ -30,6 +31,9 @@ public class Client {
         }
         if(instance == null){
             Config config = new Config();
+            SubZero.useAsGlobalSerializer(config);
+            config.getManagementCenterConfig().setEnabled(true).setUrl("http://localhost:8080/mancenter/");
+
             config.getGroupConfig()
                     .setName("MarketViewReplacement")
                     .setPassword("dupadupa");

@@ -3,6 +3,7 @@ package com.citi.marketview.hz;
 import com.citi.marketview.hz.listeners.HeartBeatListener;
 import com.citi.marketview.hz.listeners.MemberListener;
 import com.citi.marketview.hz.listeners.ObjectListener;
+import com.citi.marketview.hz.objects.HeartBeat;
 import com.hazelcast.core.Cluster;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.IMap;
@@ -20,7 +21,7 @@ public class GuardianMain {
         Cluster cluster = hi.getCluster();
         cluster.getMembers().stream().forEach(m -> memberListener.addMember(m));
         cluster.addMembershipListener(memberListener);
-        IMap<String, Long> hbs = hi.getMap("HEARTBEATS");
+        IMap<Long, HeartBeat> hbs = hi.getMap("HEARTBEATS");
         hbs.addEntryListener(new HeartBeatListener(), true);
         hi.getMap("MAPPING").put("dupa","lipa");
         hi.getMap("GUARDIANS_REST").put(hi.getCluster().getLocalMember().getAddress().getHost(),12321);
