@@ -11,8 +11,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Maven: com.hazelcast:hazelcast:3.8" level="project" />
     <orderEntry type="library" name="mancenter-3.8.1" level="project" />
     <orderEntry type="library" name="hazelcast-license-extractor-1.1.6" level="project" />
+    <orderEntry type="library" name="Maven: com.hazelcast:hazelcast:3.8" level="project" />
   </component>
 </module>
